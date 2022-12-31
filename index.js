@@ -18,10 +18,9 @@ client.on('ready', () => {
 });
 
 client.on('messageCreate', message => {
-  // Only respond if the message starts with the prefix and is a valid equation
   if (message.content.startsWith(prefix) && message.content.slice(prefix.length).trim().match(/^[\d\.\+\-\*\/\(\)]+$/)) {
     try {
-      const equation = message.content.slice(prefix.length).trim(); // Remove the prefix from the equation
+      const equation = message.content.slice(prefix.length).trim();
       const solution = math.evaluate(equation);
       message.channel.send(`${solution}`);
     } catch (err) {}
